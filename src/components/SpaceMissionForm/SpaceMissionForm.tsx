@@ -1,8 +1,10 @@
 import { useState } from "react";
+import Planet from "./Planet";
 
 export default function SpaceMissionForm() {
   const [name, setName] = useState<string>("");
-  const [planet, sePlanet] = useState<string>("Mars");
+  
+  const [planet, setPlanet] = useState<string>(Planet.Mars);
   return (
     <div>
       <input
@@ -13,12 +15,12 @@ export default function SpaceMissionForm() {
       <select
         name="planet"
         value={planet}
-        onChange={(event) => sePlanet(event.target.value)}
+        onChange={(event) => setPlanet(event.target.value)}
       >
-        <option value="Mars">Mars</option>
-        <option value="Venus">Venus</option>
-        <option value="Jupiter">Jupiter</option>
-        <option value="Saturn">Saturn</option>
+        <option value={Planet.Mars}>{Planet.Mars}</option>
+        <option value={Planet.Venus}>{Planet.Venus}</option>
+        <option value={Planet.Jupiter}>{Planet.Jupiter}</option>
+        <option value={Planet.Saturn}>{Planet.Saturn}</option>
       </select>
       <div className="output-block">
         {name.trim() === ""
@@ -28,3 +30,4 @@ export default function SpaceMissionForm() {
     </div>
   );
 }
+
