@@ -1,3 +1,6 @@
-header nav a{
-    padding-right: 10px;
-}
+.link {
+    color: rgb(55, 61, 141);
+    text-decoration: none;
+    font-size: 20px;
+    padding-left: 10px;
+  }
