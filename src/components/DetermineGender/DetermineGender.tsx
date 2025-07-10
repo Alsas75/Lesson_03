@@ -8,6 +8,7 @@ interface GenderData {
   probability: number;
   remaining_credits: number;
 }
+const key = import.meta.env.VITE_GENDER_API_KEY;
 
 export default function DetermineGender() {
   const [name, setName] = useState<string>("");
@@ -27,7 +28,7 @@ export default function DetermineGender() {
 
   async function determineGender(name: string) {
     try {
-      const res = await fetch(`https://api.genderapi.io/api/?name=${name}`);
+      const res = await fetch(`https://api.genderapi.io/api/?key=${key}&name=${name}`);
       if (!res.ok) {
         if (res.status === 429) {
           throw new Error("Too many requests. Please try again later.");
@@ -57,29 +58,6 @@ export default function DetermineGender() {
   };
 
   return (
-    //     <div>
-    //         <h2>Determine Gender</h2>
-    //       <input
-    //         type="text"
-    //         value={name}
-    //         onChange={(event) => setName(event.target.value)}
-    //       />
-    //       <button type="button" onClick={determineGender}>
-    //       Determine gender
-    //       </button>
-    //       {data && (
-    //         <div style={{ marginTop: 20 }}>
-    //           <p><strong>Имя:</strong> {data.name}</p>
-    //           <p><strong>Пол:</strong> {translateGender(data.gender)}</p>
-    //           <p><strong>Страна:</strong> {data.country}</p>
-    //           <p><strong>Вероятность:</strong> {data.probability}%</p>
-    //           <p><strong>Остаток запросов:</strong> {data.remaining_credits}</p>
-    //         </div>
-    //       )}
-
-    //     </div>
-
-    // <h2>Gender Predictor</h2>
     <section>
       <h2>Determine Gender</h2>
       <div className={styles.card}>
