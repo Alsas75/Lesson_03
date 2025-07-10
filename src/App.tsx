@@ -1,5 +1,5 @@
 import "./App.css";
-import { AgePredictor } from "./components/AgePredictor/AgePredictor";
+// import { AgePredictor } from "./components/AgePredictor/AgePredictor";
 // import Demo from "./components/Demo";
 import DetermineGender from "./components/DetermineGender/DetermineGender";
 // import SpaceMissionForm from "./components/SpaceMissionForm";
