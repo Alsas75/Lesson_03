@@ -1,15 +1,20 @@
-import { Link, Outlet } from "react-router-dom";
+import { NavLink, Outlet } from "react-router-dom";
 import style from "./UserLayout.module.css";
+import { ROUTES } from "../constants/routes";
 
 export const UserLayout = () => {
   return (
-    <div>
+    <nav>
       <h2>User account</h2>
       <nav>
-        <Link to="/account/settings" className={style.link}>Settings</Link>
-        <Link to="/account/information" className={style.link}>Information</Link>
+        <NavLink to={ROUTES.ACCOUNT_SETTINGS} className={style.link}>
+          Account Settings
+        </NavLink>
+        <NavLink to={ROUTES.ACCOUNT_INFO} className={style.link}>
+          Personal information
+        </NavLink>
       </nav>
       <Outlet />
-    </div>
+    </nav>
   );
 };

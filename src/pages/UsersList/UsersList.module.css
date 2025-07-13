@@ -1,0 +1,116 @@
+.cardsList {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 30px;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.cardUser {
+    background-color: #b6d7b4ab;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+    transition: all 0.3s ease;
+    padding: 15px;
+}
+
+.cardUser:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+.cardUser h3 {
+    margin: 0 0 15px 0;
+    font-size: 1.3rem;
+    color: #2c3e50;
+    font-weight: 600;
+}
+
+.userInfo {
+    display: flex;
+    gap: 20px;
+}
+
+/* Контейнер для аватарки */
+.avatarContainer {
+    width: 120px;
+    height: 120px;
+    flex-shrink: 0;
+}
+
+.avatarImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 3px solid #f8f9fa;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.userInfo > div:last-child {
+    flex-grow: 1;
+    overflow: hidden;
+}
+
+.userInfo p {
+    margin: 6px 0;
+    font-size: 1rem;
+    color: #555;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.userInfo a {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 6px 12px;
+    background-color: #3498db;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 0.95rem;
+    transition: background-color 0.2s;
+}
+
+.userInfo a:hover {
+    background-color: #2980b9;
+}
+
+@media (max-width: 1200px) {
+    .cardsList {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .cardsList {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .userInfo {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .cardUser h3 {
+        text-align: center;
+    }
+    
+    .avatarContainer {
+        width: 150px;
+        height: 150px;
+    }
+    
+    .userInfo > div:last-child {
+        text-align: center;
+        width: 100%;
+    }
+    
+    .userInfo p {
+        white-space: normal;
+    }
+}

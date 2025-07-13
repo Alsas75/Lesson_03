@@ -6,5 +6,11 @@ export const ROUTES = {
     AGE_PREDICTOR: "/age-predictor",
     CONTACTS: "/contacts",
     ABOUT: "/about",
-    USER: "/account"
+    USER: "/account",
+    ACCOUNT_SETTINGS: "/account/settings",
+    ACCOUNT_INFO: "/account/information",
+    PRODUCTS: "/products",  
+    USERS: "/users",
   } as const;
+
+  

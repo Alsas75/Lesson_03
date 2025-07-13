@@ -1,6 +1,32 @@
-.link {
-    color: rgb(55, 61, 141);
-    text-decoration: none;
-    font-size: 20px;
-    padding-left: 10px;
-  }
+.navBar {
+  background-color: lightpink;
+  height: 60px;
+  padding: 24px;
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.navBar {
+  color: black;
+  text-decoration: none;
+  font-size: x-large;
+}
+
+.navBar a:hover {
+  color: lightslategray;
+  text-decoration: none;
+  font-size: x-large;
+}
+
+.navLinkActive {
+  color: goldenrod;
+  text-decoration: none;
+  font-size: x-large;
+}
+.navLink {
+  color: black;
+  text-decoration: none;
+  font-size: x-large;
+}

@@ -1,4 +1,4 @@
-#root {
+/* #root {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
@@ -44,3 +44,8 @@
 nav{
   margin: 10px;
 }
+ */
+
+ body{
+  margin: 0;
+ }
