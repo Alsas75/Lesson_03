@@ -11,11 +11,15 @@ import About from "../pages/About/About";
 import Contact from "../pages/Contact/Contact";
 import Home from "../pages/Home/Home";
 import NotFound from "../pages/NotFound/NotFound";
-import Registration from "../pages/Registration/Registration";
+
 import { ProductsList } from "../components/ProductsList/ProductsList";
-import { UsersList } from "../pages/UsersList/UsersList";
 import ProductPage from "../pages/ProductPage/ProductPage";
 import UserPage from "../pages/UserPage/UserPage";
+import { UsersList } from "../components/UsersList/UsersList";
+import Registration from "../pages/Registration/Registration";
+import Login from "../pages/Login/Login";
+import CreateProduct from "../pages/CreateProduct/CreateProduct";
+
 
 export default function AppRoutes() {
   return (
@@ -24,6 +28,8 @@ export default function AppRoutes() {
         <Route path="/" element={<MainLayout />}>
           <Route index element={<Home />} />
           <Route path={ROUTES.REGISTRATION} element={<Registration />} />
+          <Route path={ROUTES.ADD_PRODUCT} element={<CreateProduct />} />
+          <Route path={ROUTES.LOGIN} element={<Login />} />
           <Route path={ROUTES.DETERMINE_GENDER} element={<DetermineGender />} />
           <Route path={ROUTES.AGE_PREDICTOR} element={<AgePredictor />} />
           <Route path={ROUTES.COUNTER} element={<Counter />} />
@@ -31,8 +37,8 @@ export default function AppRoutes() {
           <Route path={ROUTES.ABOUT} element={<About />} />
           <Route path={ROUTES.PRODUCTS} element={<ProductsList />} />
           <Route path={ROUTES.USERS} element={<UsersList />} />
-          <Route path="/users/:id" element={<UserPage />} />
-          <Route path="/products/:id" element={<ProductPage />} />
+          <Route path={ROUTES.USERS + "/:id"} element={<UserPage />} />
+          <Route path={ROUTES.PRODUCTS + "/:id"} element={<ProductPage />} />
 
           <Route path={ROUTES.USER} element={<UserLayout />}>
             <Route path={ROUTES.ACCOUNT_SETTINGS} element={<Settings />} />

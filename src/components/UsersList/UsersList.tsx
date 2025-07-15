@@ -1,19 +1,28 @@
-import { useEffect, useState } from "react";
-import type { User } from "../../components/types";
+import { useState } from "react";
+//import type { User } from "../../components/types";
 import { Link } from "react-router-dom";
 import style from "./UsersList.module.css";
 import placeholderAvatar from "../../assets/zaglushka.png";
+import useUsers from "../../hooks/useUser";
+
 
 export const UsersList = () => {
-  const [users, setUsers] = useState<User[]>([]);
-  useEffect(() => {
-    fetchUsers();
-  }, []);
+  const {users, loading, error} = useUsers();
+//   const [users, setUsers] = useState<User[]>([]);
+//   useEffect(() => {
+//     fetchUsers();
+//   }, []);
+if (loading) {
+  return <div>Loading...</div>
+}
+if (error) {
+  return <div>{error}</div>
+}
 
   const UserAvatar = ({
     src,
     alt,
-    className, // теперь используется
+    className,
   }: {
     src?: string;
     alt?: string;
@@ -45,11 +54,11 @@ export const UsersList = () => {
     );
   };
 
-  async function fetchUsers() {
-    const res = await fetch("https://api.escuelajs.co/api/v1/users");
-    const usersRes = await res.json();
-    setUsers(usersRes);
-  }
+  // async function fetchUsers() {
+  //   const res = await fetch("https://api.escuelajs.co/api/v1/users");
+  //   const usersRes = await res.json();
+  //   setUsers(usersRes);
+  // }
 
   return (
     <section>

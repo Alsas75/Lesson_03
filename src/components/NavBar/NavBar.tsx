@@ -13,6 +13,7 @@ export const NavBar = () => {
       <nav className={style.navBar}>
         <NavLink to="/" className={classSelector}>Home</NavLink>
         <NavLink to={ROUTES.REGISTRATION} className={classSelector}>Sign Up</NavLink>
+        <NavLink to={ROUTES.LOGIN} className={classSelector}>Sign In</NavLink>
         <NavLink to={ROUTES.DETERMINE_GENDER} className={classSelector}>Gender predictor</NavLink>
         <NavLink to={ROUTES.AGE_PREDICTOR} className={classSelector}>
           Age predictor
@@ -23,6 +24,9 @@ export const NavBar = () => {
         <NavLink to={ROUTES.USER} className={classSelector}>User account</NavLink>
         <NavLink to={ROUTES.PRODUCTS} className={classSelector}>        
           Products
+        </NavLink>
+        <NavLink to={ROUTES.ADD_PRODUCT} className={classSelector}>        
+          Add Product
         </NavLink>
         <NavLink to={ROUTES.USERS} className={classSelector}>Users</NavLink>
 

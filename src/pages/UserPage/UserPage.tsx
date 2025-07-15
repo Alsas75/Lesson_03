@@ -21,11 +21,11 @@ export default function UserPage() {
   return (
     <section>
       <h2>User: {user?.name}</h2>
-      <div className={style.card}>      
-        <div className={style.imgContainer}> 
-          <img 
-            src={user?.avatar} 
-            alt={user?.name} 
+      <div className={style.card}>
+        <div className={style.imgContainer}>
+          <img
+            src={user?.avatar}
+            alt={user?.name}
             className={style.userImage}
             onError={(e) => {
               (e.target as HTMLImageElement).src = placeholderAvatar;
