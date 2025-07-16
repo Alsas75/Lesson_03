@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import type { Product } from "../../components/types";
-
+import type { Product } from "../../types";
 
 export default function ProductPage() {
   const { id } = useParams();

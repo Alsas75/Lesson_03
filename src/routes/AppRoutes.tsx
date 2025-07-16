@@ -19,6 +19,8 @@ import { UsersList } from "../components/UsersList/UsersList";
 import Registration from "../pages/Registration/Registration";
 import Login from "../pages/Login/Login";
 import CreateProduct from "../pages/CreateProduct/CreateProduct";
+import Galery from "../components/Galery/Galery";
+import { ToggleCard } from "../components/ToggleCard/ToggleCard";
 
 
 export default function AppRoutes() {
@@ -42,8 +44,10 @@ export default function AppRoutes() {
 
           <Route path={ROUTES.USER} element={<UserLayout />}>
             <Route path={ROUTES.ACCOUNT_SETTINGS} element={<Settings />} />
-            <Route path={ROUTES.ACCOUNT_INFO} element={<Information />} />
+            <Route path={ROUTES.ACCOUNT_INFO} element={<Information />} />            
           </Route>
+          <Route path={"/galery"} element={<Galery />} />
+          <Route path={ROUTES.TOGGLECARD} element={<ToggleCard />} />
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>

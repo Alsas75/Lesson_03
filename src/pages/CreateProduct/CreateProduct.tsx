@@ -1,15 +1,14 @@
 import { Formik, Form, Field } from "formik";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import * as Yup from "yup";
+import type { Category } from "../../types";
 
 const ProductSchema = Yup.object().shape({
   title: Yup.string()
     .min(2, "Too Short!")
     .max(100, "Too Long!")
     .required("Required"),
-  price: Yup.number()
-    .min(0, "Price cannot be negative")
-    .required("Required"),
+  price: Yup.number().positive("Mast be positive").required("Required"),
   description: Yup.string()
     .min(10, "Description should be at least 10 characters")
     .required("Required"),
@@ -22,7 +21,7 @@ const ProductSchema = Yup.object().shape({
     .required("Image URL is required"),
 });
 
-interface Credentials {
+interface Dto {
   title: string;
   price: number;
   description: string;
@@ -32,24 +31,34 @@ interface Credentials {
 
 const CreateProduct = () => {
   const [message, setMessage] = useState("");
+  const [categories, setCategories] = useState<Category[]>([]);
+
+  async function fetchCategories() {
+    const res = await fetch("https://api.escuelajs.co/api/v1/categories");
+    const arr = await res.json();
+    setCategories(arr);
+  }
+
+  useEffect(() => {
+    fetchCategories();
+  }, []);
 
   async function fetchProduct(values: {
     title: string;
     price: number;
     description: string;
     categoryId: number;
-    imageUrl: string; 
+    imageUrl: string;
   }) {
-    
-    const credentials: Credentials = {
+    const dto: Dto = {
       ...values,
-      images: [values.imageUrl], 
+      images: [values.imageUrl],
     };
 
     const res = await fetch("https://api.escuelajs.co/api/v1/products/", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(credentials),
+      body: JSON.stringify(dto),
     });
 
     if (res.ok) {
@@ -79,44 +88,42 @@ const CreateProduct = () => {
       >
         {({ errors, touched }) => (
           <Form>
-            <div>
-              <label>Title:</label>
-              <Field name="title" />
-              {errors.title && touched.title && <div>{errors.title}</div>}
-            </div>
+            <label>Title:</label>
+            <Field name="title" />
+            {errors.title && touched.title && <div>{errors.title}</div>}
 
-            <div>
-              <label>Price:</label>
-              <Field name="price" type="number" />
-              {errors.price && touched.price && <div>{errors.price}</div>}
-            </div>
+            <label>Price:</label>
+            <Field name="price" type="number" />
+            {errors.price && touched.price && <div>{errors.price}</div>}
 
-            <div>
-              <label>Description:</label>
-              <Field name="description" as="textarea" />
-              {errors.description && touched.description && (
-                <div>{errors.description}</div>
-              )}
-            </div>
+            <label>Description:</label>
+            <Field name="description" as="textarea" />
+            {errors.description && touched.description && (
+              <div>{errors.description}</div>
+            )}
 
-            <div>
-              <label>Category ID:</label>
-              <Field name="categoryId" type="number" />
-              {errors.categoryId && touched.categoryId && (
-                <div>{errors.categoryId}</div>
-              )}
-            </div>
+            {/* <label>Category ID:</label>
+            <Field name="categoryId" type="number" />
+            {errors.categoryId && touched.categoryId && (
+              <div>{errors.categoryId}</div>
+            )} */}
 
-            <div>
-              <label>Image URL:</label>
-              <Field 
-                name="imageUrl" 
-                type="url"
-              />
-              {errors.imageUrl && touched.imageUrl && (
-                <div>{errors.imageUrl}</div>
-              )}
-            </div>
+            <Field as="select" name="category">
+              {/* <option value="1">Electronics</option>
+              <option value="2">Clothes</option> */}
+              {categories.map((c) => (
+                <option value={c.id}>{c.name}</option>
+              ))}
+            </Field>
+            {errors.categoryId && touched.categoryId ? (
+              <div>{errors.categoryId}</div>
+            ) : null}
+
+            <label>Image URL:</label>
+            <Field name="imageUrl" type="url" />
+            {errors.imageUrl && touched.imageUrl && (
+              <div>{errors.imageUrl}</div>
+            )}
 
             <button type="submit">Submit</button>
           </Form>

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import type { User } from "../../components/types";
+import type { User } from "../../types";
 import style from "./UserPage.module.css";
 import placeholderAvatar from "../../assets/zaglushka.png";
 
